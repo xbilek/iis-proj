@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+{% block title %}My matches{% endblock %} 
+
+{% block content %}
+    <h2>Match history:</h2>
+    Matches of teams i created:
+    <table class="table table-striped">
+    {% for team in teams %}
+        {% for match in matches %}
+        <tr>
+            {% if match.team1_name == team.name%}
+            <td>tournament_id: {{ match.tournament_id }}</td>
+            <td><b>{{ match.team1_name }}:{{ match.point1 }}</b></td>
+            <td>{{ match.team2_name }}:{{ match.point2 }}</td>
+            {% endif %}
+            {% if match.team2_name == team.name %}
+            <td>tournament_id: {{ match.tournament_id }}</td>
+            <td>{{ match.team1_name }}:{{ match.point1 }}</td>
+            <td><b>{{ match.team2_name }}:{{ match.point2 }}</b></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    </table>
+    Matches of teams im member of:
+    <table class="table table-striped">
+        {% for team in teams_im_in %}
+            {% for match in matches %}
+            <tr>
+                {% if match.team1_name == team.name%}
+                <td>tournament_id: {{ match.tournament_id }}</td>
+                <td><b>{{ match.team1_name }}:{{ match.point1 }}</b></td>
+                <td>{{ match.team2_name }}:{{ match.point2 }}</td>
+                {% endif %}
+                {% if match.team2_name == team.name %}
+                <td>tournament_id: {{ match.tournament_id }}</td>
+                <td>{{ match.team1_name }}:{{ match.point1 }}</td>
+                <td><b>{{ match.team2_name }}:{{ match.point2 }}</b></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        {% endfor %}
+        </table>
+{% endblock %}

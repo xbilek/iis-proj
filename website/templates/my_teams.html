@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block title %}My teams{% endblock %} 
+
+{% block content %}
+<div id="created_by_me">
+<h2 >Teams created by me:</h2>
+</br>
+<table class="table table-hover table-striped table-sm">
+{% for i in teams %}
+    <tr>
+     <td><b>Name:</b></td>   
+     <td><a href="/update/{{i.id}}">{{ i.name }}</a></td>   
+     <td><b>Zakladatel:</b></td>
+     <td>{{ i.manager.first_name }}</td> 
+     <td><b>ID:</b></td>
+     <td>{{ i.id }}</td>
+     <td><a href="/delete/{{ i.id }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+    </tr>
+     
+
+{% endfor %}
+</table>
+</div>
+</br>
+<div>
+<h2 >Teams where I am a member:</h2>
+{% for i in teams_im_in %}
+    
+<b>Team Name:</b>   <a href="/show_members/{{ i.id }}">{{ i.name }}</a>  
+<a href="/leave_team/{{i.id}}" class="btn btn-outline-danger btn-sm">Leave team</a
+</br>
+<hr>
+
+
+{% endfor %}
+</div>
+{% endblock %}

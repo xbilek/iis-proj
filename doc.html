@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF=8"/>
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+<h1>Název zadání (editujte)</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Pavel Marek <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xmarek75@stud.fit.vutbr.cz">xmarek75@stud.fit.vutbr.cz</a> -
+		Analýza, fontend, backend
+	</dd>
+	<dd>Štěpán Bílek <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xbilek25@stud.fit.vutbr.cz">xbilek75@stud.fit.vutbr.cz</a> - 
+		Analýza, backend, frontend
+	</dd>
+  <dd>Filip Přichystal <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xprich09@stud.fit.vutbr.cz">xprich09@stud.fit.vutbr.cz</a> - 
+		Analýza, dokumentace
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="https://iisproj-000.herokuapp.com">https://iisproj-000.herokuapp.com</a></dd>
+	<dd>(pokud má aplikace více vstupních stránek, napište obdobně další URL)</dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+<tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin@admin</td><td>123456789</td><td>Administrátor</td></tr>
+<tr><td>adam@adam</td><td>123456789</td><td>Správce turnaje</td></tr>
+<tr><td>barbora@barbora</td><td>123456789</td><td>Člen týmu</td></tr>
+</table>
+
+
+<h3>Video</h3>
+
+<p><a href="https://drive.google.com/file/d/1wg4CQ6XLWwy_B5YuERITXhMDP8Gtf8sX/view?usp=sharing">Odkaz na video(google drive)</a></p> 
+
+<h2>Implementace</h2>
+<p>Systém je implementován v jazyce python, konkrétně ve frameworku flask, jako SŘBD jsme zvolili PostgreSQL. K přístupu k databázi používáme knihovnu SQLAlchemy, kde pro každou tabulku tvoříme model a přes ten přistupujeme
+	k databázi. Formuláře se zpracovávají pomocí knihovny wtf-forms. Uživatelské rozhraní je implementováné pomocí modulu jinja2 a frameworku Bootstrap. Celý systém, včetně databáze je hostován na heroku.com.
+</p>
+
+<!-- <h3>Databáze</h3>
+
+Zde vložte grafické schéma relační databáze (tabulek v databázi). -->
+
+<h2>Instalace</h2>
+
+
+<ul>
+<li>nainstalovaný python3, pip</li>
+<li>pomocí pip nainstalovat všechny položky z requirements.txt</li>
+<li>spuštění programu pomocí příkazu "flask run" v kořenovém adresáří</li>
+<li>inicializace databáze se spustí zároveň se spuštěním programu</li>
+
+</ul>
+
+<h2>Známé problémy</h2>
+<p>Z časových důvodů, nebylo implementováno přidání loga týmy, v harmonogramu musí výsledky jednotlivých kol, zadat uživatel, nemusí si ale nic pamatovat, vše potřebné má u pole vypsáno.</p>
+
+Přerozdělení bodů: xmarek75 40, xbilek25 40, xprich09 20
+
+</body>
+</html>

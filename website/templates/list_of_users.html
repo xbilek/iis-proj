@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% block title %}List of Users{% endblock %} 
+
+{% block content %}
+<h1>List of Users:</h1>
+
+
+<table class="table table-striped">
+{% for user in all_users %}
+<tr>
+    <th><b>Jmeno:</b></th>  
+    <th>{{user.first_name}}</th>     
+    <th><b>Email:</b></th>  
+    <th>{{user.email}}</th>
+    {% if current_user.admin == True %}
+        {% if user.admin == False %}
+        <th><a href="/delete_user/{{ user.id }}" class="btn btn-danger btn-sm">Delete</a></th>
+        {% else: %}
+            <th>You are admin!</th>
+        {% endif %}
+    {% endif %}
+</tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

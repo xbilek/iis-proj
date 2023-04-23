@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% block title %}Update{% endblock %} 
+
+{% block content %}
+<h1>Team update: </h1>
+    <br>
+    <form action="/update/{{team_to_update.id}}" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", value=team_to_update.name)}}
+        <br>
+        {{ form.logo.label(class="form-label") }}
+        {{ form.logo(class="form-control", value=team_to_update.logo)}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+        <a href="/add_member/{{team_to_update.id}}" class="btn btn-outline-secondary">Add Member</a>
+    </form>
+</br>
+</br>
+
+<div>
+    <h2 >Members:</h2>
+    <table class="table table-striped">
+    {% for i in members %}
+    <tr>
+    <td><b>Name:</b></td>   
+    <td>{{ i.first_name }}</td>  
+    <td><a href="/kick_from_team/{{ i.id }}/{{team_to_update.id}}" class="btn btn-outline-danger btn-sm">Kick</a></td>
+    </tr>
+    
+    
+    {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}

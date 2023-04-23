@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% block title %}Match update{% endblock %} 
+
+{% block content %}
+<h1>Match update: </h1>
+    <h3>Create new match</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.team_name1.label(class="form-label") }}
+         <b>teams:</b>
+        {% for team in participators %}
+        {{team.name}}, 
+        {% endfor %}
+        {{ form.team_name1(class="form-control")}}
+        <br>
+        {{ form.team_name2.label(class="form-label") }}
+         <b>teams:</b>
+        {% for team in participators %}
+        {{team.name}},
+        {% endfor %}
+        {{ form.team_name2(class="form-control")}}
+        
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+    
+    
+    <hr>
+    
+
+</br>
+{% endblock %}

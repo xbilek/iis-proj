@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block title %}List of tournaments{% endblock %} 
+
+{% block content %}
+<h1>List of tournaments:</h1>
+</br>
+    <table class="table table-striped">
+{% for tournament in all_tournaments %}
+    <tr>
+        <td><b>ID:</b></td>
+        <td>{{tournament.id}}</td>
+        <th><b>name:</b> </th>
+            <th><a href="/tournament_detail/{{tournament.id}}">{{ tournament.name }} </a></th>
+                <th><b>Date:</b></th>
+                    <th>{{ tournament.date }}</th>
+                        <th><b>Founder:</b></th>
+                            <th>{{ tournament.tournament_manager.first_name }}</th>
+                                {% if current_user.admin == True %} 
+                                    {%if tournament.confirmation != True %}
+                                        <th><a href="/confirm_tournament/{{tournament.id}}" class="btn btn-secondary btn-sm">Confirm</a></th>
+                                    {% else: %}
+                                        <th><font color="green">Confirmed</font></th>
+                                    {% endif %}
+                                {% endif %}
+                                {% if current_user.admin != True %} 
+                                    {%if tournament.confirmation == True: %}
+                                            <th><font color="green">Confirmed by admin</font></th>
+                                    {% else: %}
+                                            <th><font color="red">Not confirmed</font></th>
+                                    {% endif %}
+                                {% endif %}
+    </tr>
+{% endfor %}
+    </table>
+
+
+{% endblock %}

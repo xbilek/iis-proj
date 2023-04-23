@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+{% block title %}Tournament details{% endblock %} 
+
+{% block content %}
+<br>
+<h2>Tournament details:</h2>
+
+<table class="table table-hover table-striped table-sm">
+    <tr><th>Name:</th> <th>{{tournament.name}}</th></tr>
+    <tr><td>Date:</td> <td>{{tournament.date}}</td></tr>
+    <tr><td>Prize:</td> <td>{{tournament.prize}}</td></tr>
+    <tr><td>Max team members:</td> <td>{{tournament.max_team_members}}</td></tr>
+    <tr><td>Min team members:</td> <td>{{tournament.min_team_members}}</td></tr>
+    <tr><td>Max teams:</td> <td>{{tournament.max_teams}}</td></tr>
+    <tr><td>Min teams:</td> <td>{{tournament.min_teams}}</td></tr>
+    <tr><td>Description:</td> <td>{{tournament.description}}</td></tr>
+    <tr><td>Founder:</td> <td>{{manager.first_name}}</td></tr>
+</table>
+<a href="/own_harmonogram/{{tournament.id}}" class="btn btn-primary btn-sm">Show scheme</a>
+<br><br>
+{% if teams_you_can_register != "42" %}
+<h3>Teams you can request for register:</h3>
+
+<div>
+    <table class="table table-hover table-striped table-sm">
+        {% for team in teams_you_can_register %} 
+            {% set team_count = team.members|length %}
+            {% if team_count+1 <= tournament.max_team_members and team_count+1 >= tournament.min_team_members%}
+                <tr>
+                <td><b>Name:</b> 
+                    <a href="/show_members/{{ team.id }}">{{ team.name }}</a></td>
+                {% if team in teams_that_requested %}
+                    <td><a href="/tournament_unrequest/{{team.id}}/{{tournament.id}}" class="btn btn-outline-primary btn-sm">UnRequest</a></td>
+                {% elif team in teams_registered %}   
+                    <td><a href="/tournament_unregister/{{team.id}}/{{tournament.id}}" class="btn btn-outline-danger btn-sm">Unregister</a></td>
+                {% else %}
+                    {% if flag == true %}
+                    <td><a href="/tournament_request/{{team.id}}/{{tournament.id}}" class="btn btn-primary btn-sm">Request</a></td>
+                    {% endif %}
+                {% endif %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<br>
+<br><br>
+<h3>Registered teams</h3>
+
+<div>
+    <table class="table table-hover table-striped table-sm">
+    {% for team in teams_registered %}
+    <tr>
+        <td><b>Name:</b>  
+        <a href="/show_members/{{ team.id }}">{{ team.name }}</a> </td>
+        
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+
+
+{% endblock %}

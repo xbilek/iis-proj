@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+{% block title %}Test{% endblock %} 
+
+{% block content %}
+<h1>Match update: </h1>
+    <h3>team1: {{team1.name}}</h3> vs <h3>team2: {{team2.name}}</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.team_name1.label(class="form-label") }}
+        {{ form.team_name1(class="form-control")}}
+        <br>
+        {{ form.team_name2.label(class="form-label") }}
+        {{ form.team_name2(class="form-control")}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+    team1:{{team1.name}}
+    <br>
+    team2:{{team2.name}}
+
+</br>
+{% endblock %}

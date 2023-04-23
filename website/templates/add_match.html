@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block title %}Add match{% endblock %} 
+
+{% block content %}
+<h1>Match update: </h1>
+    <h3>Create new match</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.team_name1.label(class="form-label") }}
+        {{ form.team_name1(class="form-control")}}
+        <br>
+        {{ form.team_name2.label(class="form-label") }}
+        {{ form.team_name2(class="form-control")}}
+        <br>
+        {{ form.round_number.label(class="form-label") }}
+        {{ form.round_number(class="form-control")}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+    
+    team1:{{team1.name}}
+    <br>
+    team2:{{team2.name}}
+    {% for i in list_of_all_matches %}
+        
+       match: {{i}} id: {{i.tournament_id}}:{{ i.team1_name }}:{{ i.team2_name }} round:{{ i.round_number }}<hr>
+    {% endfor %}
+
+</br>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block title %}Match update{% endblock %} 
+
+{% block content %}
+<h1>Match update: </h1>
+    <h3>team1: {{team1.name}}</h3> vs <h3>team2: {{team2.name}}</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.point1.label(class="form-label") }}
+        {{ form.point1(class="form-control")}}
+        <br>
+        {{ form.point2.label(class="form-label") }}
+        {{ form.point2(class="form-control")}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+    <br>
+    <a href="/own_delete_match/{{ match.id }}" class="btn btn-outline-danger ">Delete</a><br>
+    <a href="/own_harmonogram/{{match.tournament_id}}" class="btn btn-primary ">Back to harmonogram</a><br>
+    match id:{{match.id}} ma byt tu<br>
+    points1:{{match.point1}}
+    points2:{{match.point2}}
+
+</br>
+{% endblock %}

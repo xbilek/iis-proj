@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+{% block title %}Harmonogram{% endblock %} 
+
+{% block content %}
+
+
+<h2>Harmonogram for: {{tournament.name}}<br> </h2>
+<br>
+
+
+<table class="table table-striped table-sm">
+    
+    
+    {% for x in range( number_of_rounds) %}
+    <tr>
+        <td>Round {{x+1}}:</td>
+        {% for match in list_of_matches %}
+
+            {% if match.round_number == x+1 %}
+                {% if user.id == tournament.manager_id %}
+                <td><a href="/own_match_detail/{{ match.team1_name }}/{{ match.team2_name }}/{{ tournament.id }}" class="btn btn-outline-secondary btn-sm ">
+                    {{match.team1_name}}:{{match.team2_name}}<br>
+                    {{match.point1}} : {{match.point2}}<br>
+                </a></td>
+                {% else: %}
+                <td><a href="" class="btn btn-outline-secondary btn-sm ">
+                    {{match.team1_name}}:{{match.team2_name}}<br>
+                    {{match.point1}} : {{match.point2}}<br>
+                </a></td>
+                {% endif %}    
+            {% endif %}
+        {% endfor %}
+        {% if user.id == tournament.manager_id %}
+                <td><a href="/own_add_match/{{ tournament.id }}/{{x+1}}" class="btn btn-outline-secondary btn-sm ">Add match</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+   
+
+                
+</table>  
+ 
+{% endblock %}

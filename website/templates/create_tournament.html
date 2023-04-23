@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block title %}Create new tournament{% endblock %} 
+
+{% block content %}
+
+<h1>Create new tournament:</h1>
+    <br>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control")}}
+        <br>
+        {{ form.date.label(class="form-label") }}
+        {{ form.date(class="form-control")}}
+        <br>
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control")}}
+        <br>
+        {{ form.prize.label(class="form-label") }}
+        {{ form.prize(class="form-control")}}
+        <br>
+        {{ form.max_team_members.label(class="form-label") }}
+        {{ form.max_team_members(class="form-control")}}
+        <br>
+        {{ form.min_team_members.label(class="form-label") }}
+        {{ form.min_team_members(class="form-control")}}
+        <br>
+        {{ form.max_teams.label(class="form-label") }}
+        {{ form.max_teams(class="form-control")}}
+        <br>
+        {{ form.min_teams.label(class="form-label") }}
+        {{ form.min_teams(class="form-control")}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+
+{% endblock %}

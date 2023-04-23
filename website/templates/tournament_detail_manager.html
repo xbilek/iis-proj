@@ -1,0 +1,74 @@
+{% extends "base.html" %} 
+{% block title %}Tournament details{% endblock %} 
+
+{% block content %}
+<div>
+    <h1>Tournament details:</h1>
+    <br>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", value=tournament.name)}}
+        <br>
+        {{ form.date.label(class="form-label") }}
+        {{ form.date(class="form-control", value=tournament.date)}}
+        <br>
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control", value=tournament.description)}}
+        <br>
+        {{ form.prize.label(class="form-label") }}
+        {{ form.prize(class="form-control", value=tournament.prize)}}
+        <br>
+        {{ form.max_team_members.label(class="form-label") }}
+        {{ form.max_team_members(class="form-control", value=tournament.max_team_members)}}
+        <br>
+        {{ form.min_team_members.label(class="form-label") }}
+        {{ form.min_team_members(class="form-control", value=tournament.min_team_members)}}
+        <br>
+        {{ form.max_teams.label(class="form-label") }}
+        {{ form.max_teams(class="form-control", value=tournament.max_teams)}}
+        <br>
+        {{ form.min_teams.label(class="form-label") }}
+        {{ form.min_teams(class="form-control", value=tournament.min_teams)}}
+        <br>
+        {{ form.submit(class="btn btn-dark") }}
+    </form>
+</div>
+<hr>
+<div>
+    <h3>Team requests:</h3>
+<table class="table table-striped">   
+    {% for team in teams_that_requested %}
+        <tr>
+        <th><b>Name:</b></th>  
+        <th><a href="/show_members/{{ team.id }}">{{ team.name }}</a></th> 
+        {% if flag == True %}
+        <th><a href="/confirm_team/{{ team.id }}/{{ tournament.id }}" class="btn btn-primary btn-sm">Confirm</a></th>
+        {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+</div>
+<hr>
+<div>
+    <h3>Registered teams:</h3>
+    <table class="table table-striped">
+        {% for team in teams_participating %}
+        <tr>
+            <th>Name:</th> 
+            <th><a href="/show_members/{{ team.id }}">{{team.name}}</a></th>
+            <th><a href="/remove_team_tournament/{{ team.id }}/{{ tournament.id }}" class="btn btn-danger btn-sm">Remove</a></th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<a href="/harmonogram/{{tournament.id}}" class="btn btn-primary ">Generate Scheme</a>
+<a href="/own_harmonogram/{{tournament.id}}" class="btn btn-primary ">Create Scheme</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
